@@ -38,7 +38,7 @@ namespace Lab10
                     int dia = Int32.Parse(a);
                     DateTime fechaNac = new DateTime(ano, mes, dia);
                     Console.WriteLine("\tDireccion (si no posee ninguna, presione ENTER): ");
-                    string d = Console.ReadLine();
+                    string d;
                     ConsoleKeyInfo response = Console.ReadKey(true);
                     if (response.Key == ConsoleKey.Enter)
                     {
@@ -69,8 +69,9 @@ namespace Lab10
                         {
                             jardin = true;
                         }
+                        Console.WriteLine("\t\tOwner: ");
                         
-                        Address address = new Address(str,num,comm,city,)
+                       // Address address = new Address(str,num,comm,city,)
                     }
 
 
