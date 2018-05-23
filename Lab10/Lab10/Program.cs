@@ -12,9 +12,6 @@ namespace Lab10
     {
         static void Main(string[] args)
         {
-            DateTime dateTime = new DateTime(1996, 09, 17);
-            Person person = new Person("Cami","sep",dateTime,null, "2345678", null, null);
-
             while (true)
             {
                 Console.WriteLine("\t\tBienvenido a la municipalidad");
@@ -40,9 +37,11 @@ namespace Lab10
                     Console.WriteLine("\tDireccion (si no posee ninguna, presione ENTER): ");
                     string d;
                     ConsoleKeyInfo response = Console.ReadKey(true);
+                    Address address;
                     if (response.Key == ConsoleKey.Enter)
                     {
                         d = null;
+                        address = null;
                     }
                     else
                     {
@@ -69,10 +68,15 @@ namespace Lab10
                         {
                             jardin = true;
                         }
-                        Console.WriteLine("\t\tOwner: ");
-                        
-                       // Address address = new Address(str,num,comm,city,)
+                        //Console.WriteLine("\t\tOwner: ");
+
+                        address = new Address(str, num, comm, city, null, anoConstr, piezas, banos, jardin, false);
                     }
+
+                    Console.WriteLine("\tRut: ");
+                    string rut = Console.ReadLine();
+
+                    Person person = new Person(nombre, apellido, fechaNac, address, rut, null, null);
 
 
                 }
