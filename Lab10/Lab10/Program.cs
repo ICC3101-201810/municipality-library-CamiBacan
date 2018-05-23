@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using ClassLibrary1;
 
 namespace Lab10
 {
@@ -11,42 +12,71 @@ namespace Lab10
     {
         static void Main(string[] args)
         {
-            Assembly archivoAssembly = Assembly.LoadFile(@"C:\Users\csepu\Desktop\municipality-library-CamiBacan\ClassLibrary1.dll");
-            foreach (Type type in archivoAssembly.GetTypes())
+            DateTime dateTime = new DateTime(1996, 09, 17);
+            Person person = new Person("Cami","sep",dateTime,null, "2345678", null, null);
+
+            while (true)
             {
-                if (type.IsClass)
+                Console.WriteLine("\t\tBienvenido a la municipalidad");
+                Console.WriteLine("1. Inscribir personas\n2. Inscribir propiedades\n3. Inscribir automoviles");
+                string ans = Console.ReadLine();
+                if (ans == "1")
                 {
-                    Console.WriteLine("Clase: " + type.Name);
-
-                    foreach (PropertyInfo att in type.GetProperties())
+                    Console.Clear();
+                    Console.WriteLine("\tIngrese nombre: ");
+                    string nombre = Console.ReadLine();
+                    Console.WriteLine("\tApellido: ");
+                    string apellido = Console.ReadLine();
+                    Console.WriteLine("\tAño nacimiento: ");
+                    string a = Console.ReadLine();
+                    int ano = Int32.Parse(a);
+                    Console.WriteLine("\tMes nacimiento: ");
+                    string b = Console.ReadLine();
+                    int mes = Int32.Parse(a);
+                    Console.WriteLine("\tDia nacimiento: ");
+                    string c = Console.ReadLine();
+                    int dia = Int32.Parse(a);
+                    DateTime fechaNac = new DateTime(ano, mes, dia);
+                    Console.WriteLine("\tDireccion (si no posee ninguna, presione ENTER): ");
+                    string d = Console.ReadLine();
+                    ConsoleKeyInfo response = Console.ReadKey(true);
+                    if (response.Key == ConsoleKey.Enter)
                     {
-                        Console.WriteLine("\tAtributos: " + att.Name + "({0})", att.PropertyType.Name);
+                        d = null;
                     }
-                    foreach (MethodInfo meth in type.GetMethods())
+                    else
                     {
-                        Console.WriteLine("\t\tMetodos: " + meth.Name);
-                        ParameterInfo[] parameters = meth.GetParameters();
-                        Console.WriteLine("\t\tParametros: ");
-                        foreach (ParameterInfo par in parameters)
+                        Console.WriteLine("\t\tStreet: ");
+                        string str = Console.ReadLine();
+                        Console.WriteLine("\t\tNumber: ");
+                        string n = Console.ReadLine();
+                        int num = Int32.Parse(n);
+                        Console.WriteLine("\t\tCommune: ");
+                        string comm = Console.ReadLine();
+                        Console.WriteLine("\t\tCity: ");
+                        string city = Console.ReadLine();
+                        Console.WriteLine("\t\tAño de construccion: ");
+                        int anoConstr = Int32.Parse(Console.ReadLine());
+                        Console.WriteLine("\t\tNumero de piezas: ");
+                        int piezas = Int32.Parse(Console.ReadLine());
+                        Console.WriteLine("\t\tNumero de ba;os: ");
+                        int banos = Int32.Parse(Console.ReadLine());
+                        Console.WriteLine("\t\tTiene patio? (true or false): ");
+                        string patio = Console.ReadLine();
+                        bool jardin = false;
+                        patio.ToLower();
+                        if (patio == "true")
                         {
-                            Console.WriteLine("\t\t\t" + par.ParameterType.Name);
+                            jardin = true;
                         }
-                        Console.WriteLine("\t\tRetorna: " + meth.ReturnType.Name);
-                        Console.WriteLine("\n\n");
+                        
+                        Address address = new Address(str,num,comm,city,)
                     }
-                    
-                
-                }
-                else if (type.IsInterface)
-                {
-                    Console.WriteLine("Interfaz: " + type.Name);
 
 
                 }
-
-                
-
             }
+
             Console.ReadLine();
         }
     }
